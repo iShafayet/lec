@@ -1,5 +1,5 @@
 #!/usr/bin/env node
 
 require('coffee-script/register')
-require('./cmd.coffee')
+module.exports = require('./cmd.coffee')
 
