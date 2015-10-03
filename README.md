@@ -3,7 +3,7 @@ Command Line Wrapper for Line Ending Corrector (A utility that makes sure your f
 
 # about line-ending-corrector
 
-It converts all those pesky `\r\n` (a.k.a `CRLF`) line endings in Microsoft Windows operating systems into the more commonly used and recognized `\n` (a.k.a `CR`). Though it lets you do the opposite as well ( converting `CR` to `CRLF` )
+It converts all those pesky `\r\n` (a.k.a `CRLF`) line endings in Microsoft Windows operating systems into the more commonly used and recognized `\n` (a.k.a `LF`). Though it lets you do the opposite as well ( converting `LF` to `CRLF` ). It supports `\r` (a.k.a `CR`) as well for the sake of completion.
 
 You should definitely have this in your build process especially if someone in your team works from a non UNIX system.
 
@@ -13,14 +13,15 @@ You should definitely have this in your build process especially if someone in y
 
 For usage from the command line
 
-    [sudo] npm install -g lec
+```bash
+[sudo] npm install -g lec
+```
 
-# Usage the command line
+# Usage from the command line
 
 To operate on a single file inplace (the file will only be altered if any inconsistent line endings are found)
 
     lec <filename>
-
 
 To operate on a single file with a diffrent output file name.
 
@@ -29,7 +30,7 @@ To operate on a single file with a diffrent output file name.
 To operate on all the files in the current dirrectory
 
     lec -d
-    
+
 To operate on all the files in a directory
 
     lec -d <directory>
@@ -37,8 +38,27 @@ To operate on all the files in a directory
 To operate on all the files in a directory and all subdirectories recursively
 
     lec -d -r <directory>
-    
-To use CRLF instead of LF as the desired End Of Line character
+
+To use `CRLF` instead of `LF` as the desired End Of Line character
 
     lec <filename> --eolc CRLF
 
+# Full Command Line Help
+
+```
+  Usage: lec <filename> [options]
+
+  Options:
+
+    -h, --help                          output usage information
+    -V, --version                       output the version number
+    -o, --output <filename>             Output File Path
+    -r, --recursive                     Run the algorithm recursively
+    -f, --force-write                   Forcefully (over)write the destination file
+    -d, --directory                     Apply on the contents of a directory
+    -c, --eolc <End Of Line Character>  End of Line Character
+    -e, --encoding <encoding>           Preferred Encoding
+    -v, --verbose                       Output additional information
+    -n, --nodot                         Ignore Dot Files
+
+```
