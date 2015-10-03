@@ -31,6 +31,21 @@ shouldForceWrite = (commander.forceWrite is true)
 #       fs.unlinkSync curPath
 #   fs.rmdirSync path
 
+getValidatedDirectory = (dir)->
+
+  dir = path.normalize dir
+
+  unless fs.existsSync dir
+    console.log "Directory '#{dir}' does not exist"
+    process.exit(3)
+
+  stat = fs.statSync dir
+  unless stat.isDirectory()
+    console.log "Directory '#{dir}' is not a directory"
+    process.exit(4)
+
+  return dir
+
 getValidatedSource = (source)->
 
   source = path.normalize source
@@ -72,9 +87,22 @@ correct = (source, destination)->
   fs.writeFileSync destination, output, { encoding: encoding }
   if isVerboseMode
     if wasAltered
-      console.log "corrected contents outputted to '#{destination}'"
+      console.log "correct content saved to '#{destination}'"
     else
-      console.log "'#{source}' already has the correct line endings. The file was copied to '#{destination}' as-is."
+      if source is destination
+        console.log "'#{source}' already has the correct line endings."
+      else
+        console.log "'#{source}' already has the correct line endings. The file was copied to '#{destination}' as-is."
+
+
+correctDir = (dir)->
+  fs.readdirSync(dir).forEach (file, index) ->
+    curPath = path.join dir, file
+    stat = fs.lstatSync(curPath)
+    if stat.isDirectory()
+      correctDir curPath
+    else
+      correct curPath, curPath
 
 
 if commander.directory
@@ -84,6 +112,10 @@ if commander.directory
   if commander.output
     console.log "You may not provide an output path for directories"
     process.exit(1)
+
+  directory = getValidatedDirectory commander.args[0]
+
+  correctDir directory
 
 else
 
