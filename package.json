@@ -1,6 +1,6 @@
 {
   "name": "lec",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Command Line Wrapper for Line Ending Corrector (An utility that makes sure your files have consistent line endings)",
   "scripts": {
     "test": "echo 'no tests specified'"
