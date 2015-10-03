@@ -1,6 +1,6 @@
 {
   "name": "lec",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Command Line Wrapper for Line Ending Corrector (An utility that makes sure your files have consistent line endings)",
   "scripts": {
     "test": "echo 'no tests specified'"
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/iShafayet/line-ending-corrector.git"
+    "url": "https://github.com/iShafayet/lec.git"
   },
   "keywords": [
     "Utility",
@@ -25,9 +25,9 @@
   "author": "Sayem Shafayet <ishafayet@gmail.com> (http://ishafayet.me/)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/iShafayet/line-ending-corrector/issues"
+    "url": "https://github.com/iShafayet/lec/issues"
   },
-  "homepage": "https://github.com/iShafayet/line-ending-corrector",
+  "homepage": "https://github.com/iShafayet/lec",
   "dependencies": {
     "coffee-script": "^1.10.0",
     "commander": "^2.8.1",
