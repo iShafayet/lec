@@ -1,5 +1,5 @@
 # lec
-Command Line Wrapper for Line Ending Corrector (An utility that makes sure your files have consistent line endings)
+Command Line Wrapper for Line Ending Corrector (A utility that makes sure your files have consistent line endings)
 
 # about line-ending-corrector
 
@@ -19,26 +19,26 @@ For usage from the command line
 
 To operate on a single file inplace (the file will only be altered if any inconsistent line endings are found)
 
-    line-ending-corrector <filename>
+    lec <filename>
 
 
 To operate on a single file with a diffrent output file name.
 
-    line-ending-corrector <filename> -o <output-filename>
+    lec <filename> -o <output-filename>
 
 To operate on all the files in the current dirrectory
 
-    line-ending-corrector -d
+    lec -d
     
 To operate on all the files in a directory
 
-    line-ending-corrector -d <directory>
+    lec -d <directory>
 
 To operate on all the files in a directory and all subdirectories recursively
 
-    line-ending-corrector -d -r <directory>
+    lec -d -r <directory>
     
 To use CRLF instead of LF as the desired End Of Line character
 
-    line-ending-corrector <filename> --eolc CRLF
+    lec <filename> --eolc CRLF
 
