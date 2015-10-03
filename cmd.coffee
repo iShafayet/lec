@@ -13,6 +13,7 @@ commander.option '-d, --directory', 'Apply on the contents of a directory'
 commander.option '-c, --eolc <End Of Line Character>', 'End of Line Character'
 commander.option '-e, --encoding <encoding>', 'Preferred Encoding'
 commander.option '-v, --verbose', 'Output additional information'
+commander.option '-n, --nodot', 'Ignore Dot Files'
 
 commander.parse process.argv
 
@@ -20,6 +21,8 @@ eolc = commander.eolc or 'CRLF'
 encoding = commander.encoding or 'utf8'
 isVerboseMode = (commander.verbose is true)
 shouldForceWrite = (commander.forceWrite is true)
+
+shouldIgnoreDotFiles = (commander.nodot is true)
 
 # deleteDirRecursive = (path) ->
 #   return unless fs.existsSync(path)
@@ -97,6 +100,7 @@ correct = (source, destination)->
 
 correctDir = (dir)->
   fs.readdirSync(dir).forEach (file, index) ->
+    return if shouldIgnoreDotFiles and file.charAt(0) is '.'
     curPath = path.join dir, file
     stat = fs.lstatSync(curPath)
     if stat.isDirectory()
